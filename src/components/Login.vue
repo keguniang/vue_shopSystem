@@ -49,8 +49,8 @@ export default {
     return {
       // 这是登录表单的数据绑定对象
       loginForm: {
-        name: '',
-        pwd: ''
+        name: 'admin',
+        pwd: '123456'
       },
       // 表单验证规则对象
       rules: {
@@ -76,7 +76,11 @@ export default {
       this.$refs.loginFormRef.validate(async validate => {
         // 若没有通过表单验证
         if (!validate) return
-        const res = await this.axios.post('login', this.loginForm)
+        // 这里要注意保持与文档上名称保持一致
+        const res = await this.axios.post('login', {
+          username: this.loginForm.name,
+          password: this.loginForm.pwd
+        })
         if (res.meta.status !== 200) return this.$message.error('登陆失败')
         this.$message.success('登陆成功')
         /* 1. 将成功之后的token ，保存到客户端的 sessionStorage 中
@@ -84,6 +88,7 @@ export default {
              1.2 token 只应在当前网站打开期间生效，所以将token 保存在sessionStorage中，localStorage是持久生效的
             2. 通过编程式导航跳转到后台主页，路由地址时 /home */
         sessionStorage.setItem('token', res.data.token)
+        // sessionStorage.setItem('token', '11111111111111')
         this.$router.push('/home')
       })
     }

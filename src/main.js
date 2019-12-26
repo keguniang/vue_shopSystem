@@ -18,6 +18,13 @@ axios.interceptors.response.use(function (res) {
 }, function (err) {
   console.log(err)
 })
+
+// axios请求拦截器  为请求头添加Authorization字段，值为token
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+
 // 可以通过this.axios访问到axios
 Vue.prototype.axios = axios
 
