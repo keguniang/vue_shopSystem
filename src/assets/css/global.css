@@ -17,3 +17,12 @@ body,
     margin-top: 15px;
     text-align: right;
 }
+.treeTable{
+    margin-top: 15px;
+}
+.el-cascader{
+    width: 100%;
+}
+.el-scrollbar__wrap{
+    height: 300px !important;
+}

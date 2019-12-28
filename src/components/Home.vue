@@ -90,7 +90,6 @@ export default {
     // 获取左侧菜单列表数据
     async getMenuList() {
       const res = await this.axios.get('menus')
-      console.log(res)
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.meunList = res.data
     },
