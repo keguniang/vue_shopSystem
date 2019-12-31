@@ -61,7 +61,6 @@ export default {
 
     // 4. 指定图表的配置项和数据
     const res = await this.axios.get('reports/type/1')
-    console.log(res.data)
     if (res.meta.status !== 200) {
       return this.$message.error('获取折线图数据失败')
     }

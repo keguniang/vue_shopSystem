@@ -26,3 +26,9 @@ body,
 .el-scrollbar__wrap{
     height: 300px !important;
 }
+.el-main{
+    max-height: 740px;
+}
+.el-tag{
+    margin:7px;
+}

@@ -368,9 +368,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-tag {
-  margin: 7px;
-}
 .bdTop {
   border-top: 1px solid #eee;
 }
