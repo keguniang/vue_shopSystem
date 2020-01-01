@@ -7,28 +7,46 @@ body,
     padding: 0;
     min-width: 1022px;
 }
-.el-breadcrumb{
+
+.el-breadcrumb {
     margin-bottom: 15px;
 }
-.el-table{
+
+.el-table {
     margin-top: 15px;
 }
-.el-pagination{
+
+.el-pagination {
     margin-top: 15px;
     text-align: right;
 }
-.treeTable{
+
+.treeTable,
+.el-steps,
+.el-tabs {
     margin-top: 15px;
 }
-.el-cascader{
+
+.el-cascader {
     width: 100%;
 }
-.el-scrollbar__wrap{
+
+.el-scrollbar__wrap {
     height: 300px !important;
 }
-.el-main{
+
+.el-main {
     max-height: 740px;
 }
-.el-tag{
-    margin:7px;
+
+.el-tag {
+    margin: 7px;
+}
+
+.el-step__title {
+    font-size: 13px;
+}
+
+.ql-container.ql-snow {
+    min-height: 300px !important;
 }

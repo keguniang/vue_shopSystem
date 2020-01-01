@@ -10,6 +10,17 @@ import './assets/fonts/iconfont.css'
 import axios from 'axios'
 // 导入表格树形结构插件
 import treeTable from 'vue-table-with-tree-grid'
+// 导入时间格式化插件
+import moment from 'moment'
+// // 导入富文本编辑器插件
+import VueQuillEditor from 'vue-quill-editor'
+
+// require styles
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+// 注册为全局可用的组件
+Vue.use(VueQuillEditor)
 
 // 将treeTable注册为全局可用的组件，使用标签为<tree-table>
 Vue.component('tree-table', treeTable)
@@ -34,6 +45,12 @@ axios.interceptors.request.use(config => {
 Vue.prototype.axios = axios
 
 Vue.config.productionTip = false
+
+// 全局过滤器
+Vue.filter('dataFormate', function (originalVal) {
+  moment.defaultFormat = 'YYYY-MM-DD HH:mm:ss'
+  return moment(originalVal).format()
+})
 
 new Vue({
   router,
