@@ -27,7 +27,7 @@
         <el-table-column prop="goods_name" label="商品名称"></el-table-column>
         <el-table-column prop="goods_price" label="商品价格（元）" width="120"></el-table-column>
         <el-table-column prop="add_time" label="创建时间" width="200">
-          <template slot-scope="scope">{{scope.row.add_time | dataFormate}}</template>
+          <template slot-scope="scope">{{scope.row.add_time | dateFormate}}</template>
         </el-table-column>
         <el-table-column label="操作" width="160">
           <template slot-scope="scope">

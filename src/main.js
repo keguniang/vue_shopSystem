@@ -47,7 +47,7 @@ Vue.prototype.axios = axios
 Vue.config.productionTip = false
 
 // 全局过滤器
-Vue.filter('dataFormate', function (originalVal) {
+Vue.filter('dateFormate', function (originalVal) {
   moment.defaultFormat = 'YYYY-MM-DD HH:mm:ss'
   return moment(originalVal).format()
 })
