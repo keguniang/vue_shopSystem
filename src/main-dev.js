@@ -1,7 +1,7 @@
 // 打包入口文件
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './router.js'
 import './plugins/element.js'
 // 导入全局样式表
 import './assets/css/global.css'
@@ -12,6 +12,11 @@ import axios from 'axios'
 import treeTable from 'vue-table-with-tree-grid'
 // 导入时间格式化插件
 import moment from 'moment'
+
+// 导入NProgress的JS文件和CSS文件
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
 // // 导入富文本编辑器插件
 import VueQuillEditor from 'vue-quill-editor'
 
@@ -26,19 +31,24 @@ Vue.use(VueQuillEditor)
 Vue.component('tree-table', treeTable)
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+
+// axios请求拦截器  为请求头添加Authorization字段，值为token
+axios.interceptors.request.use(config => {
+  // 展示进度条
+  NProgress.start()
+  config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+
 // axios响应拦截器
 axios.interceptors.response.use(function (res) {
+  // 隐藏进度条
+  NProgress.done()
   // 可以直接获取到真实的数据，这样真实发送请求的时候就不用在.data的方式获取数据了
   res = res.data
   return res
 }, function (err) {
   console.log(err)
-})
-
-// axios请求拦截器  为请求头添加Authorization字段，值为token
-axios.interceptors.request.use(config => {
-  config.headers.Authorization = window.sessionStorage.getItem('token')
-  return config
 })
 
 // 可以通过this.axios访问到axios
